@@ -5,6 +5,8 @@ library(cowplot)
 library(GGally)
 library(glue)
 
+####################Boston#################### 
+
 data("Boston")
 df = Boston
 df$chas = as.factor(df$chas)
@@ -12,6 +14,8 @@ lapply(df, class)
 attach(df)
 
 overfitplots(rm, medv, 4, c(5, 10, 15, 20))
+
+####################iris####################  
 
 data("iris")
 df = iris
@@ -23,10 +27,17 @@ overfitplots(Sepal.Width, Sepal.Length, 7, c(1, 3, 5, 0))
 overfitplots(Petal.Width, Sepal.Length, 7, c(0.1, 0.2, 0.5, 0))
 overfitplots(Sepal.Length, Petal.Width, 5, c(0.1, 0.3, 0.5, 1))
 
-data('mtcars')
-df = mtcars
+####################Auto#################### 
+
+data('Auto')
+df = Auto
 attach(df)
 ggpairs(df)
+
+overfitplots(horsepower, mpg, 2, c(1, 2, 5, 0))
+
+
+####################functions#################### 
 
 overfitplots = function(x, y, n, lam) {
   axis.names = c(deparse(substitute(x)), deparse(substitute(y)))
@@ -73,10 +84,6 @@ overfit = function(x, y, n, lam, axis.names) {
 
 
 
-
-
-coef(lm.fit)
-coef(ridge.fit)
 
 
 
